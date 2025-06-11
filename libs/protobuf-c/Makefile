@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libprotobuf-c
-PKG_VERSION:=1.4.1
+PKG_VERSION:=1.5.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=protobuf-c-$(PKG_VERSION).tar.gz
@@ -56,6 +56,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_PROTOC=OFF
 
+TARGET_LDFLAGS += -latomic
+
 define Package/libprotobuf-c/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libprotobuf-c.so* $(1)/usr/lib/
@@ -63,4 +65,3 @@ endef
 
 $(eval $(call BuildPackage,libprotobuf-c))
 $(eval $(call HostBuild))
-
