@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-requests
 PKG_VERSION:=2.30.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>, Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -19,9 +19,17 @@ PKG_CPE_ID:=cpe:/a:python:requests
 PYPI_NAME:=requests
 PKG_HASH:=239d7d4458afcb28a692cdd298d87542235f4ca8d36d03a15bfc128a6559a2f4
 
+HOST_BUILD_DEPENDS:= \
+  python-chardet/host \
+  python-idna/host \
+  python-urllib3/host \
+  python-certifi/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-requests
   SUBMENU:=Python
@@ -44,3 +52,4 @@ endef
 $(eval $(call Py3Package,python3-requests))
 $(eval $(call BuildPackage,python3-requests))
 $(eval $(call BuildPackage,python3-requests-src))
+$(eval $(call HostBuild))
