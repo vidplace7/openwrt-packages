@@ -9,15 +9,19 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-chardet
 PKG_VERSION:=5.1.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_LICENSE:=LGPL-2.1
 
 PYPI_NAME:=chardet
 PKG_HASH:=0d62712b956bc154f85fb0a266e2a3c5913c2967e00348701b32411d6def31e5
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-chardet
   SUBMENU:=Python
@@ -45,3 +49,4 @@ endef
 $(eval $(call Py3Package,python3-chardet))
 $(eval $(call BuildPackage,python3-chardet))
 $(eval $(call BuildPackage,python3-chardet-src))
+$(eval $(call HostBuild))
