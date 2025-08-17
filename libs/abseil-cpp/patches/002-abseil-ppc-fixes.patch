@@ -1,5 +1,5 @@
 # From https://git.openembedded.org/meta-openembedded/tree/meta-oe/recipes-devtools/abseil-cpp
-From f9607924225ca59fb6c60222e6424b84e6f70029 Mon Sep 17 00:00:00 2001
+From 5891332fecd3bf707b58dda56b4b3f80583b5ef9 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Sat, 21 Sep 2024 20:53:06 +0800
 Subject: [PATCH] abseil: ppc fixes
@@ -82,7 +82,7 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  #elif defined(__s390__) && !defined(__s390x__)
 --- a/absl/debugging/internal/stacktrace_config.h
 +++ b/absl/debugging/internal/stacktrace_config.h
-@@ -60,7 +60,7 @@
+@@ -67,7 +67,7 @@
  #elif defined(__i386__) || defined(__x86_64__)
  #define ABSL_STACKTRACE_INL_HEADER \
    "absl/debugging/internal/stacktrace_x86-inl.inc"
