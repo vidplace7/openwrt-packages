@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-platformio
 PKG_VERSION:=6.1.18
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=platformio
 PKG_HASH:=6ea19c66fba3c5272378afa6ae11abbf883243dd8e503ac5f4ff8ac277ccc7c6
@@ -15,7 +15,6 @@ PKG_MAINTAINER:=Austin Lane <vidplace7@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-build/host \
@@ -25,7 +24,8 @@ HOST_BUILD_DEPENDS:= \
 	python-semantic-version/host \
 	python-requests/host \
 	python-tabulate/host \
-	python-pyelftools/host
+	python-pyelftools/host \
+	python-ajsonrpc/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -39,7 +39,6 @@ define Package/python3-platformio
   SUBMENU:=Python
   TITLE:=PlatformIO Host Tools
   URL:=https://github.com/platformio/platformio-core
-  BUILDONLY:=1
   DEPENDS:= \
 	+python3-light \
 	+python3-pyserial \
@@ -47,7 +46,8 @@ define Package/python3-platformio
 	+python3-semantic-version \
 	+python3-requests \
 	+python3-tabulate \
-	+python3-pyelftools
+	+python3-pyelftools \
+	+python3-ajsonrpc
 endef
 
 define Package/python3-platformio/description
@@ -58,4 +58,5 @@ endef
 
 $(eval $(call Py3Package,python3-platformio))
 $(eval $(call BuildPackage,python3-platformio))
+$(eval $(call BuildPackage,python3-platformio-src))
 $(eval $(call HostBuild))
