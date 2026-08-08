@@ -5,12 +5,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=abseil-cpp
-PKG_VERSION:=20240722.1
+PKG_VERSION:=20250512.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/abseil/abseil-cpp/releases/download/$(PKG_VERSION)
-PKG_HASH:=40cee67604060a7c8794d931538cb55f4d444073e556980c88b6c49bb9b19bb7
+PKG_HASH:=9b7a064305e9fd94d124ffa6cc358592eb42b5da588fb4e07d09254aa40086db
 
 PKG_MAINTAINER:=Austin Lane <vidplace7@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -30,7 +30,7 @@ define Package/abseil-cpp
 endef
 
 define Package/abseil-cpp/description
-Abseil is an open-source collection of C++ code (compliant to C++14) designed to augment the C++ standard library.
+Abseil is an open-source collection of C++ code (compliant to C++17) designed to augment the C++ standard library.
 endef
 
 CMAKE_INSTALL:=1
